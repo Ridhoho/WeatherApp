@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link rel="stylesheet" href="weatherApp.css" />
+  </head>
+  <body>
+    <div class="blue-gradient">
+      <div class="light-blue-box">
+        <h1 id="kota"></h1>
+        <div class="clouds-box">
+          <img src="" alt="Icon" class="clouds" id="icon" />
+          <p><span id="kondisi"></span>, <span id="suhu"></span>&deg;C</p>
+        </div>
+        <div class="white-line-1"></div>
+        <p>Keep Save</p>
+      </div>
+
+      <div class="temperature-box">
+        <div class="info">
+          <p>Kamis, 8 November 2021</p>
+          <div class="white-line-2"></div>
+        </div>
+        <div class="white-box">
+          <p class="normal" id="sewon"></p>
+          <img src="" alt="Icon Sewon" id="icon-sewon" />
+          <p class="bold"><span id="suhu-sewon"></span>&deg;C</p>
+        </div>
+        <div class="white-box">
+          <div class="clock">
+            <div class="clock-box"><p>12</p></div>
+            <p>:</p>
+            <div class="clock-box"><p>00</p></div>
+          </div>
+          <p class="normal" id="bekasi"></p>
+          <img src="" alt="Icon Bekasi" id="icon-bekasi" />
+          <p class="bold"><span id="suhu-bekasi"></span>&deg;C</p>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+      axios
+        .get(
+          "https://weatherbit-v1-mashape.p.rapidapi.com/forecast/3hourly?lat=-6.21462000&lon=106.84513000&units=imperial&lang=id",
+          {
+            headers: {
+              "x-rapidapi-key":
+                "e54ffa35c1msha05fc638dfd2f24p19ad21jsnb6665decdc2b",
+              "x-rapidapi-host": "weatherbit-v1-mashape.p.rapidapi.com",
+            },
+          }
+        )
+        .then((res) => {
+          document.querySelector("#kota").innerHTML = res.data.city_name;
+          document.querySelector("#kondisi").innerHTML =
+            res.data.data[0].weather.description;
+          document.querySelector("#suhu").innerHTML = (
+            (res.data.data[0].app_temp - 32) /
+            1.8
+          ).toFixed(1);
+          document.querySelector("#icon").src =
+            "https://cdn.weatherbit.io/static/img/icons/" +
+            res.data.data[0].weather.icon +
+            ".png";
+        });
+
+      axios
+        .get(
+          "https://weatherbit-v1-mashape.p.rapidapi.com/forecast/3hourly?lat=-7.87538490&lon=110.42620880&units=imperial&lang=en",
+          {
+            headers: {
+              "x-rapidapi-key":
+                "e54ffa35c1msha05fc638dfd2f24p19ad21jsnb6665decdc2b",
+              "x-rapidapi-host": "weatherbit-v1-mashape.p.rapidapi.com",
+            },
+          }
+        )
+        .then((res) => {
+          document.querySelector("#bekasi").innerHTML = res.data.city_name;
+          document.querySelector("#suhu-bekasi").innerHTML = (
+            (res.data.data[0].app_temp - 32) /
+            1.8
+          ).toFixed(1);
+          document.querySelector("#icon-bekasi").src =
+            "https://cdn.weatherbit.io/static/img/icons/" +
+            res.data.data[0].weather.icon +
+            ".png";
+        });
+
+      axios
+        .get(
+          "https://weatherbit-v1-mashape.p.rapidapi.com/forecast/3hourly?lat=-6.23490000&lon=106.98960000&units=imperial&lang=en",
+          {
+            headers: {
+              "x-rapidapi-key":
+                "e54ffa35c1msha05fc638dfd2f24p19ad21jsnb6665decdc2b",
+              "x-rapidapi-host": "weatherbit-v1-mashape.p.rapidapi.com",
+            },
+          }
+        )
+        .then((res) => {
+          document.querySelector("#sewon").innerHTML = res.data.city_name;
+          document.querySelector("#suhu-sewon").innerHTML = (
+            (res.data.data[0].app_temp - 32) /
+            1.8
+          ).toFixed(1);
+          document.querySelector("#icon-sewon").src =
+            "https://cdn.weatherbit.io/static/img/icons/" +
+            res.data.data[0].weather.icon +
+            ".png";
+        });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather API</title>
+  </head>
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script>
+      fetch(
+        "https://weatherbit-v1-mashape.p.rapidapi.com/forecast/3hourly?lat=-6.21462000&lon=106.84513000&units=imperial&lang=en",
+        {
+          method: "GET",
+          headers: {
+            "x-rapidapi-key":
+              "e54ffa35c1msha05fc638dfd2f24p19ad21jsnb6665decdc2b",
+            "x-rapidapi-host": "weatherbit-v1-mashape.p.rapidapi.com",
+          },
+        }
+      )
+        .then((res) => res.json())
+        .then((res) => {
+          console.log("test");
+          console.log(res);
+        });
+
+      axios
+        .get(
+          "https://weatherbit-v1-mashape.p.rapidapi.com/forecast/3hourly?lat=-6.21462000&lon=106.84513000&units=imperial&lang=en",
+          {
+            headers: {
+              "x-rapidapi-key":
+                "e54ffa35c1msha05fc638dfd2f24p19ad21jsnb6665decdc2b",
+              "x-rapidapi-host": "weatherbit-v1-mashape.p.rapidapi.com",
+            },
+          }
+        )
+        .then((res) => {
+          console.log("Test Axios");
+          console.log(res);
+        });
+
+      axios
+        .get(
+          "https://weatherbit-v1-mashape.p.rapidapi.com/forecast/3hourly?lat=-7.87538490&lon=110.42620880&units=imperial&lang=en",
+          {
+            headers: {
+              "x-rapidapi-key":
+                "e54ffa35c1msha05fc638dfd2f24p19ad21jsnb6665decdc2b",
+              "x-rapidapi-host": "weatherbit-v1-mashape.p.rapidapi.com",
+            },
+          }
+        )
+        .then((res) => {
+          console.log("Test Axios");
+          console.log(res);
+        });
+
+      axios
+        .get(
+          "https://weatherbit-v1-mashape.p.rapidapi.com/forecast/3hourly?lat=-6.23490000&lon=106.98960000&units=imperial&lang=en",
+          {
+            headers: {
+              "x-rapidapi-key":
+                "e54ffa35c1msha05fc638dfd2f24p19ad21jsnb6665decdc2b",
+              "x-rapidapi-host": "weatherbit-v1-mashape.p.rapidapi.com",
+            },
+          }
+        )
+        .then((res) => {
+          console.log("Test Axios");
+          console.log(res);
+        });
+    </script>
+  </body>
+</html>
